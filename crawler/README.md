@@ -7,8 +7,9 @@
 # Задача
 Создать скрипт, который принимает на вход ссылку википедии (пример ссылки - https://en.wikipedia.org/wiki/Visa_requirements_for_Moldovan_citizens). Скрипт должен собрать список стран в которые виза не нужна (все не красные поля) и сохранить результат в виде отсортированного списка стран от А до Я в файл под названием ссылки (пример: Visa_requirements_for_Moldovan_citizens.txt). Пример результата для https://en.wikipedia.org/wiki/Visa_requirements_for_Moldovan_citizens:
 
-> Albania
-> Andorra
-> Antigua and Barbuda
-> ...
+> Albania   
+> Andorra   
+> Antigua and Barbuda   
+> ...   
+   
 

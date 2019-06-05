@@ -35,7 +35,7 @@ def parse(html):
 
 def main():
     parse(get_html('https://en.wikipedia.org/wiki/Visa_requirements_for_Moldovan_citizens'))
-    with open("Final.txt", "w") as f:
+    with open("Final.txt", "wb") as f:
         subprocess.check_call(["python", "script.py"], stdout=f)
 
 if __name__ == '__main__':

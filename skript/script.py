@@ -2,14 +2,15 @@
 """
 Module Docstring
 """
-
+import subprocess
 import urllib.request
 from bs4 import BeautifulSoup
 
-
+countries = []
 def get_html(url):
     response = urllib.request.urlopen(url)
     return response.read()
+
 
 def parse(html):
     soup = BeautifulSoup(html, features = 'html.parser') 
@@ -20,9 +21,10 @@ def parse(html):
     for row in table.find_all('tr')[1:]:
         cols = row.find_all('td')
 
-        countries.append({
+        if not 'Visa required' in cols[1].text.strip():
+         countries.append({
             'title': cols[0].a.text,
-            'visa_requirement': cols[1].text.strip(),
+            'visa': cols[1].text.strip(),
             'allowed_stay': cols[2].text.strip(),
             'Notes': cols[3].text.strip()
             })
@@ -30,10 +32,13 @@ def parse(html):
     for country in countries:
         print(country)
 
+
 def main():
     parse(get_html('https://en.wikipedia.org/wiki/Visa_requirements_for_Moldovan_citizens'))
-
+    with open("Final.txt", "w") as f:
+        subprocess.check_call(["python", "script.py"], stdout=f)
 
 if __name__ == '__main__':
     main()
+
 

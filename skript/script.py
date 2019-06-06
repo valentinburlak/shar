@@ -7,6 +7,9 @@ import urllib.request
 from bs4 import BeautifulSoup
 
 countries = []
+f = open("file.txt", "w")
+
+
 def get_html(url):
     response = urllib.request.urlopen(url)
     return response.read()
@@ -30,13 +33,11 @@ def parse(html):
             })
 
     for country in countries:
-        print(country)
+        f.write("%s\n" % country)
 
 
 def main():
     parse(get_html('https://en.wikipedia.org/wiki/Visa_requirements_for_Moldovan_citizens'))
-    with open("Final.txt", "wb") as f:
-        subprocess.check_call(["python", "script.py"], stdout=f)
 
 if __name__ == '__main__':
     main()

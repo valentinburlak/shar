@@ -10,6 +10,7 @@ countries = []
 f = open("file.txt", "w")
 
 
+
 def get_html(url):
     response = urllib.request.urlopen(url)
     return response.read()
@@ -28,12 +29,11 @@ def parse(html):
          countries.append({
             'title': cols[0].a.text,
             'visa': cols[1].text.strip(),
-            'allowed_stay': cols[2].text.strip(),
-            'Notes': cols[3].text.strip()
             })
 
+    item = countries[0]
     for country in countries:
-        f.write("%s\n" % country)
+        f.write("%s\n" % country['title'])
 
 
 def main():
